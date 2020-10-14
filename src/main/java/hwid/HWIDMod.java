@@ -7,8 +7,6 @@ import hwid.server.HWIDServer;
 
 @Mod(modid = "HWID")
 public class HWIDMod {
-
-
     @Mod.EventHandler
     public void start(FMLServerStartingEvent event) {
         HWIDServer.start(event);

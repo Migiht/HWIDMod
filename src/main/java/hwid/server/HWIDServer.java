@@ -17,8 +17,10 @@ public class HWIDServer {
     private static Config config = new Config();
     private static final File banned = new File("banned hwids.cfg");
 
+
     public static void start(FMLServerStartingEvent event) {
         try {
+
             config = new Gson().fromJson(FileUtils.readFileToString(banned), Config.class);
         } catch (IOException e) {
             FMLLog.bigWarning("Cannot read banned hwids");
