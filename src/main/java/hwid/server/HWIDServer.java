@@ -6,6 +6,7 @@ import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.event.FMLServerStoppingEvent;
 import hwid.server.command.CommandGuard;
+import hwid.server.command.CommandHWID;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
@@ -17,6 +18,7 @@ public class HWIDServer {
 
     public static void start(FMLServerStartingEvent event) {
         event.registerServerCommand(new CommandGuard());
+        event.registerServerCommand(new CommandHWID());
         try {
             config = new Gson().fromJson(FileUtils.readFileToString(banned), Config.class);
         } catch (IOException e) {

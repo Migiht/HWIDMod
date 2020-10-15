@@ -19,30 +19,31 @@ public class CommandGuard extends CommandBase {
 
     @Override
     public String getCommandUsage(ICommandSender p_71518_1_) {
-        return "/guard on - вкл. защиту аккаунта. /guard off <код> - выкл. защиту";
+        return "/guard help";
     }
 
     @Override
     public void processCommand(ICommandSender sender, String[] args) {
-        if (args.length > 2) {
-            switch (args[1]) {
+        if (args.length >= 1) {
+            switch (args[0]) {
                 case "on": {
                     String key = RandomStringUtils.randomAlphanumeric(8);
                     sender.addChatMessage(new ChatComponentText(EnumChatFormatting.GREEN + "Вы включили защиту аккаунта"));
-                    sender.addChatMessage(new ChatComponentText(EnumChatFormatting.GOLD + "Ваш ключ : " + key));
-                    sender.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + "Для входа в аккаунт с другого компьютера, выключите защиту"));
-                    break;
+                    sender.addChatMessage(new ChatComponentText(EnumChatFormatting.GOLD + "Ваш ключ : " + key + ". Сохраните его!"));
+                    sender.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + "Для входа в аккаунт с другого компьютера, отключите защиту на этом"));
+                    return;
                 }
                 case "off": {
-                    if (args.length >= 3) {
-
+                    if (args.length >= 2) {
+                        sender.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + "Защита аккаунта отключена."));
                     }
-                    break;
+                    return;
                 }
-                default:
-                    sender.addChatMessage(new ChatComponentText(""));
             }
-        EntityPlayerMP player = getCommandSenderAsPlayer(sender);
-    }
+
+        }
+        sender.addChatMessage(new ChatComponentText(EnumChatFormatting.GREEN + "/guard on - включить защиту аккаунта."));
+        sender.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + "/guard off <код> - отключить защиту аккаунта."));
+        sender.addChatMessage(new ChatComponentText(EnumChatFormatting.GOLD + "При входе с другого ПК, отключите защиту на этом."));
     }
 }
