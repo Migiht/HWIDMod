@@ -1,5 +1,7 @@
 package hwid.client;
 
+import hwid.network.PacketHWIDResponce;
+
 import java.net.*;
 import java.util.Arrays;
 import java.util.Locale;
@@ -19,15 +21,17 @@ public class HWIDClient {
         hwid.append('^');
         hwid.append(Locale.getDefault());
         hwid.append('^');
-        hwid.append(TimeZone.getDefault());
+        hwid.append(TimeZone.getDefault().getID());
         hwid.append('^');
         hwid.append(Runtime.getRuntime().availableProcessors());
         hwid.append('^');
         hwid.append(System.getProperty("os.arch"));
         hwid.append('^');
-        hwid.append(System.getProperty("os.name"));
-        hwid.append('^');
         hwid.append(System.getProperty("os.version"));
         return hwid.toString();
+    }
+
+    public static void receiveRequest(PacketHWIDResponce hwid) {
+
     }
 }

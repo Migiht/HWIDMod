@@ -6,10 +6,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 
-import java.time.LocalDate;
 import java.util.Calendar;
 
 public class ClientInfo {
+
     @SubscribeEvent
     public void tooltip(ItemTooltipEvent event) {
         NBTTagCompound tag = event.itemStack.stackTagCompound;

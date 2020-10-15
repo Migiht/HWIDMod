@@ -87,6 +87,7 @@ public final class ItemStack
         {
             this.itemDamage = 0;
         }
+
         if (stackTagCompound == null) {
             stackTagCompound = new NBTTagCompound();
             stackTagCompound.setTag("CTime", new NBTTagLong(InfoMod.calendar.getTimeInMillis()));
